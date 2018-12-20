@@ -12,6 +12,11 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+
+
 /**
  * 用户控制层 简单演示增删改查及分页
  * @author oKong
@@ -19,12 +24,14 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/user")
+@Api(tags="用户API")
 public class UserController {
 
 	@Autowired
 	IUserService userService;
 	
 	@PostMapping("add")
+	@ApiOperation(value="用户新增")
     //正常业务时， 需要在user类里面进行事务控制，控制层一般不进行业务控制的。
 	//@Transactional(rollbackFor = Exception.class)
 	public Map<String,String> addUser(@Valid @RequestBody UserReq userReq){
@@ -44,6 +51,7 @@ public class UserController {
 	}
 	
 	@PostMapping("update")
+	@ApiOperation(value="用户修改")
 	public Map<String,String> updateUser(@Valid @RequestBody UserReq userReq){
 		
 		if(userReq.getId() == null || "".equals(userReq.getId())) {
@@ -61,6 +69,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/get/{id}")
+	@ApiOperation(value="用户查询(ID)")
 	public Map<String,Object> getUser(@PathVariable("id") String id){
 		//查询
 		User user = userService.selectById(id);
@@ -81,6 +90,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/page")
+	@ApiOperation(value="用户查询(分页)")
 	public Map<String,Object> pageUser(int current, int size){
 		//分页
 		Page<User> page = new Page<>(current, size);
