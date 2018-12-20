@@ -14,11 +14,12 @@ public class MysqlGenerator {
 
     private static final String PACKAGE_NAME = "cn.zzdev.springboot";
     private static final String MODULE_NAME = "biz";
-    private static final String OUT_PATH = "/Users/zhangzhe/springboot/springbootlearning";
+    private static final String OUT_PATH = "D:/fb";
     private static final String AUTHOR = "zhangzhe";
 
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://111.231.102.36:3306/mybatis?useUnicode=true&characterEncoding=UTF-8";
+    private static final String URL = "jdbc:mysql://111.231.102.36:3306/mybatis?useUnicode=true&characterEncoding=UTF" +
+            "-8";
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "ms@102.36";
 
@@ -43,9 +44,9 @@ public class MysqlGenerator {
                         .setAuthor(AUTHOR)
                         // 自定义文件命名，注意 %s 会自动填充表实体属性！
                         .setXmlName("%sMapper").setMapperName("%sDao")
-                // .setServiceName("MP%sService")
-                // .setServiceImplName("%sServiceDiy")
-                // .setControllerName("%sAction")
+                    // .setServiceName("MP%sService")
+                    // .setServiceImplName("%sServiceDiy")
+                    // .setControllerName("%sAction")
         ).setDataSource(
                 // 数据源配置
                 new DataSourceConfig().setDbType(DbType.MYSQL)// 数据库类型
@@ -68,7 +69,8 @@ public class MysqlGenerator {
                                 // .setTablePrefix(new String[]{"unionpay_"})// 此处可以修改为您的表前缀
                                 .setNaming(NamingStrategy.underline_to_camel)// 表名生成策略
                                 // .setInclude(new String[] {"citycode_org"}) // 需要生成的表
-                                 .setExclude(new String[]{"country", "sys_dict", "sys_privilege", "sys_role", "sys_role_privilege", "sys_user", "sys_user_role"}) // 排除生成的表
+                                .setExclude(new String[]{"country", "sys_dict", "sys_privilege", "sys_role",
+                                        "sys_role_privilege", "sys_user", "sys_user_role"}) // 排除生成的表
                                 // 自定义实体，公共字段
                                 // .setSuperEntityColumns(new String[]{"test_id"})
                                 .setTableFillList(tableFillList)

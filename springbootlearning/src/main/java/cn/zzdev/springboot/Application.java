@@ -1,15 +1,10 @@
 package cn.zzdev.springboot;
 
-import cn.zzdev.springboot.servletConfig.CustomFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
-
-import javax.servlet.Filter;
 
 /**
  * 启动类

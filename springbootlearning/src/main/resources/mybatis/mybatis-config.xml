@@ -16,10 +16,10 @@
         <setting name="aggressiveLazyLoading" value="true"/>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-    <typeHandlers>
-       <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
-         javaType="cn.lqdev.learning.springboot.chapter9.biz.entity.StatusEnum"/>
-    </typeHandlers>
+    <!--<typeHandlers>-->
+       <!--<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"-->
+         <!--javaType="cn.lqdev.learning.springboot.chapter9.biz.entity.StatusEnum"/>-->
+    <!--</typeHandlers>-->
     <plugins>
       <!-- SQL 执行性能分析，开发环境使用，线上不推荐。 -->
       <plugin interceptor="com.baomidou.mybatisplus.plugins.PerformanceInterceptor"></plugin>

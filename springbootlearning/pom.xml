@@ -71,14 +71,14 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <!--构建过程中遇到的插件-->
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <!--<build>-->
+    <!--&lt;!&ndash;构建过程中遇到的插件&ndash;&gt;-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
+    <!--</build>-->
 
 </project>
