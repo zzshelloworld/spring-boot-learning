@@ -5,16 +5,16 @@ import cn.zzdev.springboot.biz.entity.User;
 import cn.zzdev.springboot.biz.service.IUserService;
 import cn.zzdev.springboot.exception.CommonException;
 import com.baomidou.mybatisplus.plugins.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
 
 
 /**
@@ -52,6 +52,8 @@ public class UserController {
 	
 	@PostMapping("update")
 	@ApiOperation(value="用户修改")
+	//更新时 直接删除缓存 以保证下次获取时先从数据库中获取最新数据
+	@CacheEvict(value="OKONG", key="#userReq.id")
 	public Map<String,String> updateUser(@Valid @RequestBody UserReq userReq){
 		
 		if(userReq.getId() == null || "".equals(userReq.getId())) {
@@ -70,6 +72,7 @@ public class UserController {
 	
 	@GetMapping("/get/{id}")
 	@ApiOperation(value="用户查询(ID)")
+	@Cacheable(value="OKONG",key="#id")
 	public Map<String,Object> getUser(@PathVariable("id") String id){
 		//查询
 		User user = userService.selectById(id);
