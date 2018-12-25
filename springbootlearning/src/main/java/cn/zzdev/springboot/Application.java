@@ -4,7 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
  * 启动类
@@ -14,6 +17,7 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication
 @PropertySource(value = "classpath:my.properties", encoding = "utf-8")
 @ServletComponentScan
+//@EnableWebSocket
 @Slf4j
 public class Application {
 
@@ -21,6 +25,11 @@ public class Application {
         SpringApplication.run(Application.class, args);
         log.info("项目启动");
     }
+//    websocket
+//    @Bean
+//    public ServerEndpointExporter serverEndpointExporter() {
+//        return new ServerEndpointExporter();
+//    }
 
 //    可以利用首写字母的顺序，来维护过滤器的加载顺序
 //    @Bean

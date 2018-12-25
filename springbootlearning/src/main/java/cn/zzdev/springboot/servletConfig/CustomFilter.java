@@ -6,7 +6,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter(filterName="customFilter",urlPatterns={"/*"})
+@WebFilter(filterName="customFilter",urlPatterns={"/*"},asyncSupported = true)
 @Slf4j
 public class CustomFilter implements Filter {
 //    过滤器Filter，是Servlet的的一个实用技术了。可通过过滤器，对请求进行拦截，比如读取session判断用户是否登录、判断访问的请求URL是否有访问权限(黑白名单)等。
