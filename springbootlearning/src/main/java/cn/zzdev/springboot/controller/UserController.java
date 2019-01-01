@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,7 +34,7 @@ public class UserController {
 	@PostMapping("add")
 	@ApiOperation(value="用户新增")
     //正常业务时， 需要在user类里面进行事务控制，控制层一般不进行业务控制的。
-	//@Transactional(rollbackFor = Exception.class)
+	@Transactional(rollbackFor = Exception.class)
 	public Map<String,String> addUser(@Valid @RequestBody UserReq userReq){
 		
 		User user = new User();
